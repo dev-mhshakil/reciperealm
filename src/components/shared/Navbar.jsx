@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 sticky top-0 px-16 z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,6 +36,12 @@ const Navbar = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
+              <Link to={"/recipes"}>Recipes</Link>
+            </li>
+            <li>
+              <Link to={"/blog"}>Blog</Link>
+            </li>
+            <li>
               <Link to={"/about"}>About</Link>
             </li>
             {!user && (
@@ -57,7 +63,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={handleLogout}
-                  className="btn bg-red-500 text-white"
+                  className="btn bg-red-500 text-white sm:btn-md sm:mt-4"
                 >
                   Logout
                 </button>
@@ -75,6 +81,12 @@ const Navbar = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
+            <Link to={"/recipes"}>Recipes</Link>
+          </li>
+          <li>
+            <Link to={"/blog"}>Blog</Link>
+          </li>
+          <li>
             <Link to={"/about"}>About</Link>
           </li>
           {!user && (
@@ -87,22 +99,26 @@ const Navbar = () => {
               </li>
             </>
           )}
-          {user && (
-            <li>
-              <Link to={"/dashboard"}>Dashboard</Link>
-            </li>
-          )}
         </ul>
       </div>
       <div className="navbar-end space-x-2 me-5">
-        {user && (
-          <button
-            onClick={handleLogout}
-            className="btn bg-red-500 text-white hidden lg:block"
-          >
-            Logout
-          </button>
-        )}
+        <div>
+          {user && (
+            <button
+              onClick={handleLogout}
+              className="btn bg-red-500 text-white hidden lg:block lg:hover:text-black"
+            >
+              Logout
+            </button>
+          )}
+        </div>
+        <div>
+          {user && (
+            <Link to={"/dashboard"} className="btn">
+              Dashboard
+            </Link>
+          )}
+        </div>
         <div className="avatar ">
           <div className="w-12 rounded-full border-2 border-black">
             <img src={user?.photoURL || "/placeholder.jpg"} />
