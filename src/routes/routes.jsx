@@ -13,6 +13,7 @@ import Blog from "../pages/Blog";
 import ManageAllRecipe from "../pages/dashboard/ManageAllRecipe";
 import AddRecipe from "../pages/dashboard/AddRecipe";
 import EditRecipe from "../pages/dashboard/EditRecipe";
+import RecipeDetails from "../components/cards/RecipeDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/recipes",
         element: <Recipes />,
+      },
+      {
+        path: "/recipes/details/:id",
+        element: <RecipeDetails />,
       },
       {
         path: "/blog",
